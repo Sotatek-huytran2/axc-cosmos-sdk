@@ -107,6 +107,11 @@ func handlePackage(ctx sdk.Context, oracleKeeper Keeper, chainId sdk.ChainID, pa
 	}
 
 	fee := sdk.Coins{sdk.Coin{Denom: sdk.NativeTokenSymbol, Amount: feeAmount}}
+
+	fmt.Println(fee)
+	fmt.Println("---")
+	fmt.Println(sdk.PegAccount)
+
 	_, _, sdkErr := oracleKeeper.BkKeeper.SubtractCoins(ctx, sdk.PegAccount, fee)
 	if sdkErr != nil {
 		return sdk.Event{}, sdkErr
